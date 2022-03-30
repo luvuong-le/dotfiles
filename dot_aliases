@@ -1,0 +1,24 @@
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias sourcezsh="source ~/.zshrc"
+alias cls="clear"
+alias cz="chezmoi"
+alias gs="git status"
+alias ga="git add -A"
+alias gpom="git push origin master"
+alias gp="git push origin $1"
+alias gf="git fetch"
+alias grm="git rebase origin/master"
+alias gm="git merge origin/master"
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias python=python3
+alias pip=pip3
+alias todo="todo.sh"
+alias rs="exec zsh -l"
+alias vim="nvim"
+alias epath="tr ':' '\n' <<< '$PATH'"
+
+# Override ZSH Defaults
+alias ls="exa -ahF --icons"
+alias ll="exa -lahF --icons"
+alias brew="env PATH=${PATH//$(asdf where python)\/shims:/} brew"
