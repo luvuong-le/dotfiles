@@ -174,4 +174,4 @@ export PATH="/opt/homebrew/sbin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
 eval "$(fig init zsh post)"
-
+export GPG_TTY=$(tty)
