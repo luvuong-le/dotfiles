@@ -160,11 +160,8 @@ clear
 # figlet -f Bloody -w 100 "Lu-Vuong Le" | lolcat
 
 # Run system info tool (macchina)
-# macchina -t Beryllium
-neofetch
-
-
-
+# neofetch --ascii_distro Garuda
+pokeget -random 1,2,3 -small
 
 # TMOUT=120
 # TRAPALRM() { cmatrix -s -C green }

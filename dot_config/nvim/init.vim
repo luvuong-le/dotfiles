@@ -41,6 +41,7 @@ call plug#begin(stdpath('data') . '/plugged')
  source ~/.config/nvim/plugs/nerdtree.vim
  source ~/.config/nvim/plugs/nerdcommenter.vim
  source ~/.config/nvim/plugs/nvim-web-devicons.vim
+source ~/.config/nvim/plugs/nvim-lsp-installer.vim
  source ~/.config/nvim/plugs/plenary.vim
  source ~/.config/nvim/plugs/popup.vim
  source ~/.config/nvim/plugs/telescope.vim

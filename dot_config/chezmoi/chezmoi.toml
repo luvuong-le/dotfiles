@@ -1,0 +1,7 @@
+[edit]
+    command = "nvim"
+    args = []
+
+[merge]
+    command = "meld"
+    args = ["--diff", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
