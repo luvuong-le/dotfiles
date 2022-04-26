@@ -1,7 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-export PATH="${PATH}:${HOME}/.local/bin"
-eval "$(fig init zsh pre)"
-
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 # Load Antigen
 source "/opt/homebrew/share/antigen/antigen.zsh"
 
@@ -169,6 +167,13 @@ pokeget -random 1,2,3 -small
 
 export PATH="/opt/homebrew/sbin:$PATH"
 
-# Fig post block. Keep at the bottom of this file.
-eval "$(fig init zsh post)"
+bindkey "\e[1;3D" backward-word # ⌥←
+bindkey "\e[1;3C" forward-word # ⌥→
+
+# Mcfly
+eval "$(mcfly init zsh)"
+
 export GPG_TTY=$(tty)
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
