@@ -38,10 +38,9 @@ call plug#begin(stdpath('data') . '/plugged')
  source ~/.config/nvim/plugs/lspsaga.vim
  source ~/.config/nvim/plugs/lualine.vim
  source ~/.config/nvim/plugs/neoscroll.vim
- source ~/.config/nvim/plugs/nerdtree.vim
- source ~/.config/nvim/plugs/nerdcommenter.vim
+ source ~/.config/nvim/plugs/neo-tree.vim
  source ~/.config/nvim/plugs/nvim-web-devicons.vim
-source ~/.config/nvim/plugs/nvim-lsp-installer.vim
+ source ~/.config/nvim/plugs/nvim-lsp-installer.vim
  source ~/.config/nvim/plugs/plenary.vim
  source ~/.config/nvim/plugs/popup.vim
  source ~/.config/nvim/plugs/telescope.vim
@@ -49,6 +48,14 @@ source ~/.config/nvim/plugs/nvim-lsp-installer.vim
  source ~/.config/nvim/plugs/vim-fugitive.vim
  source ~/.config/nvim/plugs/vim-javascript.vim
  source ~/.config/nvim/plugs/vim-snippets.vim
+ source ~/.config/nvim/plugs/dash.vim  
+ source ~/.config/nvim/plugs/nvim-treesitter.vim
+ source ~/.config/nvim/plugs/null-ls.vim
+ source ~/.config/nvim/plugs/gitsigns.vim
+ source ~/.config/nvim/plugs/toggleterm.vim
+ Plug 'MunifTanjim/nui.nvim'
+ Plug 'edluffy/specs.nvim'
+ Plug 'windwp/nvim-autopairs'
 call plug#end()
 
 " -------------------------------------------------------
@@ -65,7 +72,8 @@ colorscheme dracula
 " KEYBINDINGS
 " -------------------------------------------------------
 nnoremap <C-q> :quit!<CR>
-nnoremap <C-\> :NERDTreeToggle<CR>
+" nnoremap <C-\> :NERDTreeToggle<CR>
+nnoremap <leader>` :ToggleTerm direction=float<CR>
 
 " Find files using Telescope command-line sugar."
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
