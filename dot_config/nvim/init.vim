@@ -25,12 +25,13 @@ set ttyfast                 " Speed up scrolling in Vim
 " set spell                 " enable spell check (may need to download language package)
 set noswapfile              " disable creating swap file
 set backupdir=~/.cache/vim  " Directory to store backup files.
+set completeopt=menu,menuone,noselect
 
 " -------------------------------------------------------
 " PLUGS
 " -------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
- source ~/.config/nvim/plugs/coc.vim
+" source ~/.config/nvim/plugs/coc.vim
  source ~/.config/nvim/plugs/barbar.vim
  source ~/.config/nvim/plugs/dashboard-nvim.vim
  source ~/.config/nvim/plugs/dracula.vim
@@ -47,7 +48,7 @@ call plug#begin(stdpath('data') . '/plugged')
  source ~/.config/nvim/plugs/vim-devicons.vim
  source ~/.config/nvim/plugs/vim-fugitive.vim
  source ~/.config/nvim/plugs/vim-javascript.vim
- source ~/.config/nvim/plugs/vim-snippets.vim
+" source ~/.config/nvim/plugs/vim-snippets.vim
  source ~/.config/nvim/plugs/dash.vim  
  source ~/.config/nvim/plugs/nvim-treesitter.vim
  source ~/.config/nvim/plugs/null-ls.vim
@@ -56,6 +57,15 @@ call plug#begin(stdpath('data') . '/plugged')
  Plug 'MunifTanjim/nui.nvim'
  Plug 'edluffy/specs.nvim'
  Plug 'windwp/nvim-autopairs'
+ Plug 'hrsh7th/cmp-nvim-lsp'
+ Plug 'hrsh7th/cmp-buffer'
+ Plug 'hrsh7th/cmp-path'
+ Plug 'hrsh7th/cmp-cmdline'
+ Plug 'hrsh7th/nvim-cmp'
+
+ " For vsnip users.
+ Plug 'hrsh7th/cmp-vsnip'
+ Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 " -------------------------------------------------------
@@ -72,7 +82,6 @@ colorscheme dracula
 " KEYBINDINGS
 " -------------------------------------------------------
 nnoremap <C-q> :quit!<CR>
-" nnoremap <C-\> :NERDTreeToggle<CR>
 nnoremap <leader>` :ToggleTerm direction=float<CR>
 
 " Find files using Telescope command-line sugar."
