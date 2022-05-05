@@ -36,7 +36,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable the following language servers
-local servers = { 'tsserver', 'sumneko_lua', 'vimls', 'gopls' }
+local servers = { 'tsserver', 'sumneko_lua', 'vimls', 'gopls', 'jsonls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -355,6 +355,7 @@ require('nvim-autopairs').setup{}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+local lspkind = require('lspkind')
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -367,6 +368,22 @@ local cmp = require 'cmp'
     },
     completion = {
        completeopt = 'menu,menuone,noinsert'
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = "symbol_text",
+            menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[LuaSnip]",
+                nvim_lua = "[Lua]",
+                latex_symbols = "[Latex]",
+            }),
+            maxwidth = 50,
+            before = function (entry, vim_item)
+            return vim_item
+            end
+        })
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -390,6 +407,7 @@ local cmp = require 'cmp'
     end, { 'i', 's' }),
     }),
     sources = cmp.config.sources({
+      { name = 'nvim_lsp_signature_help' },
       { name = 'nvim_lsp' },
       { name = 'path' },
       { name = 'vsnip' }, -- For vsnip users.

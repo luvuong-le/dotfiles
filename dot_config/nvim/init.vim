@@ -54,10 +54,12 @@ call plug#begin(stdpath('data') . '/plugged')
  source ~/.config/nvim/plugs/null-ls.vim
  source ~/.config/nvim/plugs/gitsigns.vim
  source ~/.config/nvim/plugs/toggleterm.vim
+ source ~/.config/nvim/plugs/lspkind.vim
  Plug 'MunifTanjim/nui.nvim'
  Plug 'edluffy/specs.nvim'
  Plug 'windwp/nvim-autopairs'
  Plug 'hrsh7th/cmp-nvim-lsp'
+ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
  Plug 'hrsh7th/cmp-buffer'
  Plug 'hrsh7th/cmp-path'
  Plug 'hrsh7th/cmp-cmdline'
