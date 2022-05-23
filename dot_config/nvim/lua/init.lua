@@ -1,4 +1,6 @@
 local lspconfig = require 'lspconfig'
+local protocol = require'vim.lsp.protocol'
+
 local on_attach = function(client, bufnr)
     protocol.CompletionItemKind = {
     '', -- Text
@@ -30,6 +32,8 @@ local on_attach = function(client, bufnr)
 end
 
 vim.wo.number = true
+vim.wo.fillchars='eob: '
+vim.lsp.set_log_level("debug")
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -37,12 +41,22 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable the following language servers
 local servers = { 'tsserver', 'sumneko_lua', 'vimls', 'gopls', 'jsonls' }
-for _, lsp in ipairs(servers) do
+for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
+
+lspconfig.sumneko_lua.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+}
 
 require('neoscroll').setup({
     mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
@@ -59,7 +73,7 @@ require('neoscroll').setup({
 })
 
 require('lualine').setup({
-	options = { theme = 'Horizon' },
+  options = { theme = 'Horizon' },
   sections = {
     lualine_a = {
       {
@@ -159,7 +173,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
         {text = " ", texthl = "DiagnosticSignInfo"})
       vim.fn.sign_define("DiagnosticSignHint",
         {text = "", texthl = "DiagnosticSignHint"})
-        vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+        -- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 
 require("neo-tree").setup({
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -426,4 +440,6 @@ cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex 
 
 -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
+
+require('which-key').setup {}
 

@@ -25,13 +25,11 @@ set ttyfast                 " Speed up scrolling in Vim
 " set spell                 " enable spell check (may need to download language package)
 set noswapfile              " disable creating swap file
 set backupdir=~/.cache/vim  " Directory to store backup files.
-set completeopt=menu,menuone,noselect
 
 " -------------------------------------------------------
 " PLUGS
 " -------------------------------------------------------
 call plug#begin(stdpath('data') . '/plugged')
-" source ~/.config/nvim/plugs/coc.vim
  source ~/.config/nvim/plugs/barbar.vim
  source ~/.config/nvim/plugs/dashboard-nvim.vim
  source ~/.config/nvim/plugs/dracula.vim
@@ -48,7 +46,6 @@ call plug#begin(stdpath('data') . '/plugged')
  source ~/.config/nvim/plugs/vim-devicons.vim
  source ~/.config/nvim/plugs/vim-fugitive.vim
  source ~/.config/nvim/plugs/vim-javascript.vim
-" source ~/.config/nvim/plugs/vim-snippets.vim
  source ~/.config/nvim/plugs/dash.vim  
  source ~/.config/nvim/plugs/nvim-treesitter.vim
  source ~/.config/nvim/plugs/null-ls.vim
@@ -64,10 +61,10 @@ call plug#begin(stdpath('data') . '/plugged')
  Plug 'hrsh7th/cmp-path'
  Plug 'hrsh7th/cmp-cmdline'
  Plug 'hrsh7th/nvim-cmp'
-
- " For vsnip users.
  Plug 'hrsh7th/cmp-vsnip'
  Plug 'hrsh7th/vim-vsnip'
+ Plug 'folke/which-key.nvim'
+ Plug 'preservim/tagbar'
 call plug#end()
 
 " -------------------------------------------------------
@@ -78,6 +75,12 @@ call plug#end()
  endif
  
 syntax enable
+
+augroup user_colors
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+augroup END
+
 colorscheme dracula
 
 " -------------------------------------------------------
@@ -85,12 +88,15 @@ colorscheme dracula
 " -------------------------------------------------------
 nnoremap <C-q> :quit!<CR>
 nnoremap <leader>` :ToggleTerm direction=float<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Find files using Telescope command-line sugar."
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+let g:indentLine_fileTypeExclude = ['dashboard']
 
 " -------------------------------------------------------
 " LUA SETTINGS
